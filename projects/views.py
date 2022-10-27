@@ -27,7 +27,7 @@ def create_project(request):
             project = form.save(False)
             project.owner = request.user
             project.save()
-            return redirect("list_projects")
+            return redirect("home")
     else:
         form = ProjectForm()
     context = {
