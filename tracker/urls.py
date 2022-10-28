@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.shortcuts import redirect
 
 def redirect_home(request):
-    return redirect("home")
+    return redirect("list_projects")
 
 urlpatterns = [
     path("", redirect_home, name="home"),
