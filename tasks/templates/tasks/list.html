@@ -4,31 +4,26 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>My Tasks</title>
     </head>
     <body>
         <main>
             <div>
-                <h1>{{ project.name }}</h1>
-                <p>{{ project.description }}</p>
-                <h2>Tasks</h2>
-                <a href="{% url 'create_task' %}">Create a new task</a>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Assignee</th>
-                            <th>Start date</th>
-                            <th>Due date</th>
-                            <th>Is completed</th>
-                        </tr>
-                    </thead>
-                    {% if project.tasks.count >= 1 %}
+                <h1>My Tasks</h1>
+                {% if tasks.count > 0 %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Start date</th>
+                                <th>Due date</th>
+                                <th>Is_completed</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            {% for task in project.tasks.all %}
+                            {% for task in tasks %}
                                 <tr>
                                     <td>{{ task.name }}</td>
-                                    <td>{{ task.assignee }}</td>
                                     <td>{{ task.start_date|date:'Y-m-d H:i' }}</td>
                                     <td>{{ task.due_date|date:'Y-m-d H:i' }}</td>
                                     <td>{{ task.is_completed|yesno }}</td>
@@ -37,7 +32,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    <p>This project has no tasks</p>
+                    <p>You have no tasks</p>
                 {% endif %}
             </div>
         </main>
